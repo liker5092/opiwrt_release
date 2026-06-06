@@ -256,6 +256,16 @@ replace_banner() {
     fi
 }
 
+# 替换 hostname
+replace_hostname(){
+HOSTNAME="OpiWRT"
+SETTINGS="$BUILD_DIR/package/emortal/default-settings/files/99-default-settings"
+if [ -f "$SETTINGS" ] && ! grep -q "hostname" "$SETTINGS"; then
+    sed -i "/^exit 0/i uci -q set system.@system[0].hostname='$HOSTNAME'\nuci commit system" "$SETTINGS"
+    echo ">>> 主机名设置完成：$HOSTNAME"
+fi
+}
+
 REPO_URL=$(read_ini_by_key "REPO_URL")
 REPO_BRANCH=$(read_ini_by_key "REPO_BRANCH")
 REPO_BRANCH=${REPO_BRANCH:-main}
