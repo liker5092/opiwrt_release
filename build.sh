@@ -279,9 +279,11 @@ fi
 
 "$BASE_PATH/update.sh" "$REPO_URL" "$REPO_BRANCH" "$BUILD_DIR" "$COMMIT_HASH"
 
+replace_hostname
 apply_config
 remove_uhttpd_dependency
 replace_banner
+
 
 cd "$BASE_PATH/../$BUILD_DIR"
 make defconfig
