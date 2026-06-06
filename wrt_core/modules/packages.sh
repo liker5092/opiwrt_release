@@ -158,7 +158,7 @@ install_custom_feed() {
         msd_lite luci-app-msd_lite
     )
     local required_feed_dirs=(
-        cups tcping v2ray-geodata luci-lib-taskd luci-app-openclash
+        tcping v2ray-geodata luci-lib-taskd luci-app-openclash
         luci-app-quickstart luci-app-store luci-app-homeproxy luci-app-mosdns
         luci-app-passwall nikki luci-app-nikki mihomo-meta
         open-app-filter luci-app-oaf lucky luci-app-lucky luci-app-easytier
@@ -281,7 +281,7 @@ check_default_settings() {
 
 add_ax6600_led() {
     local athena_led_dir="$BUILD_DIR/package/emortal/luci-app-athena-led"
-    local repo_url="https://github.com/NONGFAH/luci-app-athena-led.git"
+    local repo_url="https://github.com/liker5092/luci-app-athena-led.git"
 
     echo "正在添加 luci-app-athena-led..."
     rm -rf "$athena_led_dir" 2>/dev/null
@@ -292,7 +292,8 @@ add_ax6600_led() {
     fi
 
     if [ -d "$athena_led_dir" ]; then
-        chmod +x "$athena_led_dir/root/usr/sbin/athena-led"
+        chmod +x "$athena_led_dir/root/usr/bin/athena-led"
+        chmod +x "$athena_led_dir/root/usr/bin/find_button.sh"
         chmod +x "$athena_led_dir/root/etc/init.d/athena_led"
     else
         echo "错误：克隆操作后未找到目录 $athena_led_dir" >&2
@@ -433,7 +434,7 @@ update_smartdns() {
 
 update_diskman() {
     local path="$BUILD_DIR/feeds/luci/applications/luci-app-diskman"
-    local repo_url="https://github.com/lisaac/luci-app-diskman.git"
+    local repo_url="https://github.com/liker5092/luci-app-diskman.git"
     if [ -d "$path" ]; then
         echo "正在更新 diskman..."
         cd "$BUILD_DIR/feeds/luci/applications" || return
