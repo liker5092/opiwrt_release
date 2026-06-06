@@ -301,19 +301,19 @@ add_ax6600_led() {
     fi
 }
 
-update_homeproxy() {
-    local repo_url="https://github.com/immortalwrt/homeproxy.git"
-    local target_dir="$(get_custom_feed_worktree_dir)/luci-app-homeproxy"
+#update_homeproxy() {
+#    local repo_url="https://github.com/immortalwrt/homeproxy.git"
+#    local target_dir="$(get_custom_feed_worktree_dir)/luci-app-homeproxy"
 
-    if [ -d "$target_dir" ]; then
-        echo "正在更新 homeproxy..."
-        rm -rf "$target_dir"
-        if ! git clone --depth 1 "$repo_url" "$target_dir"; then
-            echo "错误：从 $repo_url 克隆 homeproxy 仓库失败" >&2
-            exit 1
-        fi
-    fi
-}
+#    if [ -d "$target_dir" ]; then
+#        echo "正在更新 homeproxy..."
+#        rm -rf "$target_dir"
+#        if ! git clone --depth 1 "$repo_url" "$target_dir"; then
+#            echo "错误：从 $repo_url 克隆 homeproxy 仓库失败" >&2
+#            exit 1
+#        fi
+#    fi
+#}
 
 add_timecontrol() {
     local timecontrol_dir="$BUILD_DIR/package/luci-app-timecontrol"
