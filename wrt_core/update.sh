@@ -45,7 +45,7 @@ main() {
     remove_unwanted_packages
     remove_tweaked_packages
     install_custom_feed
-    update_homeproxy
+#    update_homeproxy
     fix_default_set
     fix_miniupnpd
     update_golang
@@ -83,8 +83,8 @@ main() {
     update_uwsgi_limit_as
     update_argon
     update_argon_config
-    update_aurora
-    update_aurora_config
+#    update_aurora
+#    update_aurora_config
     update_nginx_ubus_module
     check_default_settings
     install_opkg_distfeeds
