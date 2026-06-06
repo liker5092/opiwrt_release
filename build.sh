@@ -213,6 +213,47 @@ replace_banner() {
     else
         echo "未提供自定义 banner 文件，保持 OpenWrt 默认配置"
     fi
+#======
+    local profile_source="$BASE_PATH/deconfig/profile"
+    local profile_target="$BUILD_DIR/package/base-files/files/etc/profile"
+    # 确保目标目录存在
+    mkdir -p "$(dirname "$profile_target")"
+    # 检查自定义 profile 文件是否存在
+    if [[ -f "$profile_source" ]]; then
+        echo "检测到自定义 profile 文件，正在应用..."
+        cp -f "$profile_source" "$profile_target" || {
+            echo "警告：复制 profile 文件失败"
+            return 1
+        }
+        echo "文件内容验证:"
+        cat "$profile_target" || {
+            echo "警告：无法读取 profile 文件内容"
+            return 1
+        }
+    else
+        echo "未提供自定义 profile 文件，保持 OpenWrt 默认配置"
+    fi
+#------
+    local sysSH_source="$BASE_PATH/deconfig/30-sysinfo.sh"
+    local sysSH_target="$BUILD_DIR/package/base-files/files/etc/profile.d/"
+    # 确保目标目录存在
+    #mkdir -p "$(dirname "$sysSH_target")"
+    # 检查自定义 profile 文件是否存在
+    if [[ -f "$sysSH_source" ]]; then
+        echo "检测到自定义 profile.d 文件夹..."
+        cp -f "$sysSH_source" "$sysSH_target" || {
+            echo "警告：复制 profile.d/*.sh 文件失败"
+            return 1
+        }
+        echo "文件内容验证:"
+        #cat "$sysSH_target" || {
+        chmod +x $sysSH_target/30-sysinfo.sh || {        
+            echo "警告：无法+x授权 profile.d 文件下的sh文件"
+            return 1
+        }
+    else
+        echo "未提供自定义 profile.d/*.sh 文件，保持 OpenWrt 默认配置"
+    fi
 }
 
 REPO_URL=$(read_ini_by_key "REPO_URL")
