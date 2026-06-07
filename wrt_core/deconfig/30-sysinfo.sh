@@ -123,7 +123,6 @@ echo "" # fixed newline
 # 显示 IP 地址
 echo "IPv4 地址 :"
 ip -4 addr show scope global | awk '/inet / {print "   \x1B[92m"$2" On "$NF" 接口\x1B[0m\t"}' 2>/dev/null
-echo ""
 # 若有 IPv6
 #echo "IPv6 地址 :"
 # ip -6 addr show scope global | awk '/inet6 / {print "   "$2" on "$NF}'
