@@ -167,7 +167,7 @@ jobs:
           cat > release_body.txt <<EOF
           **This is 🚀 Cloud Build OpenWrt Firmware for ${{ inputs.model }}**
             - 📦 Kernel: ${{ env.KVER }}
-            - 🔧 LAN IP: $LAN_ADDR
+            - 🔧 LAN IP: 192.168.168.1
             - 📶 WIFI Password: 12345678
 
           🧩 Installed Plugins:
