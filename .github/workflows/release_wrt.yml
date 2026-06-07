@@ -162,7 +162,7 @@ jobs:
           PLUGINS=$(grep -h -oP "luci-app(-[a-zA-Z0-9]{1,}){1,}" ./firmware/*.manifest 2>/dev/null \
             | sort -u \
             | paste - - - \
-            | awk '{printf "%-28s %-28s %-28s\n",$1,$2,$3}')
+            | awk '{printf "%-28s %-28s %-28s\n",$1,$2,$3}') dockerman
 
           cat > release_body.txt <<EOF
           **This is 🚀 Cloud Build OpenWrt Firmware for ${{ inputs.model }}**
