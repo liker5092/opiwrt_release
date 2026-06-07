@@ -24,7 +24,7 @@ FEEDS_CONF="feeds.conf.default"
 GOLANG_REPO="https://github.com/sbwml/packages_lang_golang"
 GOLANG_BRANCH="26.x"
 THEME_SET="argon"
-LAN_ADDR="192.168.168.168"
+LAN_ADDR="192.168.168.1"
 
 SCRIPT_DIR=$(cd $(dirname $0) && pwd)
 BASE_PATH=${BASE_PATH:-$SCRIPT_DIR}
@@ -45,7 +45,7 @@ main() {
     remove_unwanted_packages
     remove_tweaked_packages
     install_custom_feed
-#    update_homeproxy
+    update_helloworld
     fix_default_set
     fix_miniupnpd
     update_golang
