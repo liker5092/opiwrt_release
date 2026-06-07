@@ -301,7 +301,7 @@ add_ax6600_led() {
     fi
 }
 
-#update_homeproxy() {
+update_helloworld() {
 #    local repo_url="https://github.com/immortalwrt/homeproxy.git"
 #    local target_dir="$(get_custom_feed_worktree_dir)/luci-app-homeproxy"
 
@@ -313,7 +313,7 @@ add_ax6600_led() {
 #            exit 1
 #        fi
 #    fi
-#}
+}
 
 add_timecontrol() {
     local timecontrol_dir="$BUILD_DIR/package/luci-app-timecontrol"
