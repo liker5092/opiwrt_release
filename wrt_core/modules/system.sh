@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+set_build_signature() {
+    local file="$BUILD_DIR/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js"
+    if [ -d "$(dirname "$file")" ] && [ -f $file ]; then
+        sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ by OpiWRT 2026.6.7')/g" "$file"
+    fi
+}
+
 fix_default_set() {
     if [ -d "$BUILD_DIR/feeds/luci/collections/" ]; then
         find "$BUILD_DIR/feeds/luci/collections/" -type f -name "Makefile" -exec sed -i "s/luci-theme-bootstrap/luci-theme-$THEME_SET/g" {} \;
@@ -278,13 +285,6 @@ update_nss_pbuf_performance() {
     if [ -d "$(dirname "$pbuf_path")" ] && [ -f $pbuf_path ]; then
         sed -i "s/auto_scale '1'/auto_scale 'off'/g" $pbuf_path
         sed -i "s/scaling_governor 'performance'/scaling_governor 'schedutil'/g" $pbuf_path
-    fi
-}
-
-set_build_signature() {
-    local file="$BUILD_DIR/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js"
-    if [ -d "$(dirname "$file")" ] && [ -f $file ]; then
-        sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ build by OpiWRT')/g" "$file"
     fi
 }
 
