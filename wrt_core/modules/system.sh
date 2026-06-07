@@ -3,7 +3,7 @@
 set_build_signature() {
     local file="$BUILD_DIR/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js"
     if [ -d "$(dirname "$file")" ] && [ -f $file ]; then
-        sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ by OpiWRT 2026.6.7')/g" "$file"
+        sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ by OpiWRT 2026.6.8')/g" "$file"
     fi
 }
 
