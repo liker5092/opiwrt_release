@@ -217,7 +217,7 @@ replace_banner() {
     local profile_source="$BASE_PATH/deconfig/profile"
     local profile_target="$BUILD_DIR/package/base-files/files/etc/profile"
     # 确保目标目录存在
-    mkdir -p "$(dirname "$profile_target")"
+   # mkdir -p "$(dirname "$profile_target")"
     # 检查自定义 profile 文件是否存在
     if [[ -f "$profile_source" ]]; then
         echo "检测到自定义 profile 文件，正在应用..."
