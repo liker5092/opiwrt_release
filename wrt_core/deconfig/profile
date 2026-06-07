@@ -21,7 +21,7 @@ export PATH="/usr/sbin:/usr/bin:/sbin:/bin"
 HOME=$(grep -E "^${USER:-root}:" /etc/passwd | cut -d ":" -f 6)
 HOME=${HOME:-/root}
 export HOME
-export PS1='\u@\h:\w\$ '
+export PS1='\033[1;32m\u\033[0m@\033[1;34m\h\033[0m:\033[1;33m\w\033[0m\$ '
 export ENV=/etc/shinit
 
 case "$TERM" in
@@ -54,14 +54,3 @@ alias ls='ls --color=auto'
 	done
 	unset FILE
 }
-
-
-
-#if [ -z "$FAILSAFE" ] ; then
-#	for FILE in /etc/profile.d/*.sh ; do
-#		[ -f "${FILE%.sh}.hush" ] && continue
-#		[ -f "$FILE" ] && . "$FILE"
-#	done
-#	unset FILE
-#fi
-
